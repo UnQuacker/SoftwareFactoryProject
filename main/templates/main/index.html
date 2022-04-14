@@ -1,0 +1,55 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+{#        <link rel="stylesheet" type="text/css" href="style.css">#}
+        <link rel="stylesheet" href="{% static 'main/css/style.css' %}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="shortcut icon" href="img/x.jpg" class="favicon">
+    </head>
+    <title> Kettik  </title>
+<body>
+
+<!--NAV BAR SECTION-->
+
+
+    <div class="navbar-container">
+
+        <div class="navbar" id="navbar">
+
+                <button class="hamburger" id="hamburger">
+                    <i class="fa fa-bars"></i>
+                </button>
+
+            <ul class="nav-ul" id="nav-ul">
+                <li> <a href="main">Home</a></li>
+                <li><a href="#biography-section"> About </a></li>
+                <li><a href="#videos-section"> Search </a></li>
+            </ul>
+
+            </div>
+        </div>   
+    </div>
+
+<!-- HEADER SECTION --> 
+    
+    <div class="header-container">
+        <div class="header1">
+            <h2 data-aos="fade-right"> Kettik team </h2>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+      AOS.init({
+          offset: 100,
+          duration: 1000
+      });
+    </script>
+    
+    <script src="script.js"></script>
+    
+
+</body>
+</html>
