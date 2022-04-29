@@ -7,4 +7,12 @@ def kettik(request):
 
 
 def main_page(request):
-    return render(request,'main/index.html')
+    return render(request, 'main/index.html')
+
+
+def register(request):
+    return render(request, 'main/registerligin.html')
+
+
+def search(request):
+    return render(request, 'main/search.html')

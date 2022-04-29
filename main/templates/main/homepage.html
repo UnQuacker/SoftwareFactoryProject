@@ -1,18 +1,20 @@
 {% load static %}
 <!DOCTYPE html>
 <html>
+
 <head>
-{#    <link rel="stylesheet" type="text/css" href="homepage-style.css">#}
-    <link rel="stylesheet" href="{% static 'main/css/homepage-style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'main/css/homepage-style.css' %}">
     <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
-    <link rel="shortcut icon" href="img/x.jpg" class="favicon">
+    <link rel="shortcut icon" href="{%  static 'main/images/x.jpg' %}" class="favicon">
     <title>Launch</title>
 </head>
+
 <body>
     <div class="button-container">
-        <div class="button">  
-            <a href="main"> Launch </a>
+        <div class="button">
+            <a href="{% url 'main:main' %}"> Launch </a>
         </div>
     </div>
 </body>
+
 </html>
