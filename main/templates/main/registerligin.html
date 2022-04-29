@@ -1,5 +1,6 @@
 {% load static %}
 <!DOCTYPE html>
+
 <html>
 <head>
 	<title>Login And Registration Form</title>
@@ -19,21 +20,31 @@
          <img src="{%  static 'main/images/x.jpg' %}">
          <img src="{%  static 'main/images/x.jpg' %}">
     </div>
-    <form id="login" class="input-group">
-    <input type="text" class="input-field" placeholder="User ID" required>
-    <input type="text" class="input-field" placeholder="Enter Password" required>
+    <form id="login" class="input-group" method="POST">
+        {% csrf_token %}
+    <input type="text" class="input-field" name = "login_email" placeholder="Your Email" required>
+    <input type="text" class="input-field" name = "login_password" placeholder="Enter Password" required>
     <div>
+        {% if loginMessage %}
+        <p style="color: red">{{ loginMessage }}</p>
+        {% endif %}
     <input type="checkbox" class="check-box"><span>Remember Password</span>
     </div>
     <button type="submit" class="submit-btn">Log in</button>
     </form>
-    <form id="register" class="input-group">
-        <input type="text" class="input-field" placeholder="User ID" required>
-        <input type="email" class="input-field" placeholder="Enter Your Email" required>
-        <input type="text" class="input-field" placeholder="Enter Password" required>
+    <form id="register" class="input-group" method="POST">
+        {% csrf_token %}
+        <input type="text" class="input-field" name = "register_name" placeholder="User Name" required>
+        <input type="email" class="input-field" name = "register_email" placeholder="Enter Your Email" required>
+        <input type="text" class="input-field" name = "register_password1" placeholder="Enter Your Password" required>
+{#        <input type="text" class="input-field" name = "register_password2" placeholder="Confirm Your Password" required>#}
     <div>
+        {% if message %}
+        <p style="color: red">{{ message }}</p>
+        {% endif %}
     <input type="checkbox" class="check-box"><span>I agree to the terms & conditions.</span>
     </div>
+
     <button type="submit" class="submit-btn">Register</button>
     </form>       
             
