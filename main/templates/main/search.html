@@ -1,0 +1,194 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="shortcut icon" href="img/x.jpg" class="favicon">
+</head>
+<title> Kettik </title>
+
+<body>
+
+
+
+
+    <div class="navbar-container">
+
+        <div class="navbar" id="navbar">
+
+            <button class="hamburger" id="hamburger">
+                <i class="fa fa-bars"></i>
+            </button>
+
+            <ul class="nav-ul" id="nav-ul">
+                <li> <a href="homepage.html">Home</a></li>
+                <li><a href="#biography-section"> About </a></li>
+                <li><a href="search.html"> Search </a></li>
+            </ul>
+
+        </div>
+    </div>
+    <style>
+
+#map{
+    height: 500px;
+    width: 100%;
+}
+    </style>
+    <div id="map"></div>
+
+    <script>
+        function initMap() {
+            var coords = {
+                lat: 51.177601,
+                lng: 71.432999
+            };
+            var karta = new google.maps.Map(document.getElementById("map"), {
+                zoom: 5,
+                center: coords
+            });
+        }
+    </script>
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key= AIzaSyC9V6eBUZ34XZiyW9Yrqqrb9mgS7M5_84Ucallback=initMap">
+    </script>
+
+</body>
+
+</html> -->
+
+<!DOCTYPE html>
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0, user-scalable=no" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.8.0/p5.js"></script>
+<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+
+<html>
+
+<head>
+    <title>Kettik</title>
+    <!-- <div class="navbar-container">
+
+        <div class="navbar" id="navbar">
+
+            <button class="hamburger" id="hamburger">
+                <i class="fa fa-bars"></i>
+            </button>
+
+            <ul class="nav-ul" id="nav-ul">
+                <li> <a href="homepage.html">Home</a></li>
+                <li><a href="#biography-section"> About </a></li>
+                <li><a href="search.html"> Search </a></li>
+            </ul>
+
+        </div>
+    </div> -->
+
+    <style>
+        #mymap {
+            height: 100%;
+            z-index: 1;
+        }
+
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        #mainCanvas {
+            height: 100%;
+            margin: 0px;
+            padding: 0px;
+        }
+    </style>
+    <script>
+        var map;
+        var prev_dist2loc = 0;
+
+        function getIcon(item) {
+            switch (item) {
+                case 'couple_name':
+                    return 'https://www.emoji.co.uk/files/apple-emojis/symbols-ios/782-heart-with-arrow.png';
+                    break;
+                case 'curse_words':
+                    return 'https://www.emoji.co.uk/files/apple-emojis/symbols-ios/990-right-anger-bubble.png';
+                    break;
+                case 'quotes':
+                    return 'https://www.emoji.co.uk/files/apple-emojis/smileys-people-ios/88-person-raising-both-hands-in-celebration.png';
+                    break;
+                case 'graphics':
+                    return 'https://www.emoji.co.uk/files/apple-emojis/activity-ios/461-artist-palette.png';
+                    break;
+                case 'name':
+                    return 'https://www.emoji.co.uk/files/apple-emojis/smileys-people-ios/76-ghost.png';
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        function initMap() {
+            map = new google.maps.Map(document.getElementById("mymap"), {
+                center: {
+                    lat: 33.7064032,
+                    lng: -118.290178
+                },
+            });
+
+            map.setCenter(new google.maps.LatLng(51.177601,
+                71.432999));
+            map.setZoom(18);
+            map.data.setStyle(function (feature) {
+                var myicon = feature.getProperty('icon_file');
+                var category = feature.getProperty('category');
+                if (myicon || category) {
+                    return {
+                        icon: {
+                            url: category && category.length > 0 ? getIcon(category) : myicon,
+                            scaledSize: new google.maps.Size(30, 30)
+                        }
+                    }
+                }
+            });
+
+            var gpsoptions = {
+                enableHighAccuracy: true,
+                timeout: 30000,
+                maximumAge: 0
+            };
+            navigator.geolocation.watchPosition(watch_position, error, gpsoptions);
+        }
+
+        function watch_position(position) {
+            var dist2loc = distance(
+                34.419757,
+                -119.851615,
+                position.coords.latitude,
+                position.coords.longitude,
+                "K"
+            );
+            console.log("distance to loc: " + dist2loc);
+            console.log("previous distance: " + prev_dist2loc);
+            prev_dist2loc = dist2loc;
+        }
+
+        function error(err) {
+            console.log(err.message);
+        }
+    </script>
+</head>
+
+<body>
+    <div id="mymap"></div>
+
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDz1lrs9cz8ARzZiF0gkLLNuh9GUJmHq9E&callback=initMap"
+        type="text/javascript"></script>
+</body>
+
+</html>
