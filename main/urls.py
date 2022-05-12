@@ -10,7 +10,8 @@ urlpatterns = [
     path('main', views.main_page, name='main'),
     path('login', views.login, name='login'),
     path('search', views.search, name='search'),
-    path('register', views.postsignUp, name='register')
+    path('register', views.postsignUp, name='register'),
+    path('api/', views.PlaceListAPIView.as_view(), name='api_place')
 ]
 
 urlpatterns += staticfiles_urlpatterns()

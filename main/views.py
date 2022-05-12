@@ -3,6 +3,10 @@ import traceback
 from django.shortcuts import render
 from django.http import Http404, HttpResponseRedirect
 import pyrebase
+from .models import Place
+from .serializers import PlaceSerializer
+from rest_framework.generics import ListAPIView
+
 
 firebaseConfig = {
     'apiKey': "AIzaSyA7AKnjaTU0PdvPVC0IrlxyDTktHwSG4AA",
@@ -83,3 +87,8 @@ def postsignUp(request):
     else:
         return render(request, 'main/registerligin.html')
     # return render(request, "main/homepage.html")
+
+
+class PlaceListAPIView(ListAPIView):
+    queryset = Place.objects.all()
+    serializer_class = PlaceSerializer

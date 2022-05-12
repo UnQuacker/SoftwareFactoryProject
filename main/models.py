@@ -3,7 +3,7 @@ from taggit.managers import TaggableManager
 
 
 class Place(models.Model):
-    name = models.CharField('place_name')
+    name = models.CharField('place_name', max_length=50)
     tags = TaggableManager()
 
     def __str__(self):
