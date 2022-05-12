@@ -1,66 +1,4 @@
-{% load static %}
-<!DOCTYPE html>
-<html>
-
-<head>
-    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-    <link rel="stylesheet" type="text/css" href="{% static 'main/css/style.css' %}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="shortcut icon" href="{%  static 'main/images/x.jpg' %}" class="favicon">
-</head>
-<title> Kettik </title>
-
-<body>
-
-
-
-
-    <div class="navbar-container">
-
-        <div class="navbar" id="navbar">
-
-            <button class="hamburger" id="hamburger">
-                <i class="fa fa-bars"></i>
-            </button>
-
-            <ul class="nav-ul" id="nav-ul">
-                <li> <a href="homepage.html">Home</a></li>
-                <li><a href="#biography-section"> About </a></li>
-                <li><a href="search.html"> Search </a></li>
-            </ul>
-
-        </div>
-    </div>
-    <style>
-
-#map{
-    height: 500px;
-    width: 100%;
-}
-    </style>
-    <div id="map"></div>
-
-    <script>
-        function initMap() {
-            var coords = {
-                lat: 51.177601,
-                lng: 71.432999
-            };
-            var karta = new google.maps.Map(document.getElementById("map"), {
-                zoom: 5,
-                center: coords
-            });
-        }
-    </script>
-    <script async defer
-        src="https://maps.googleapis.com/maps/api/js?key= AIzaSyC9V6eBUZ34XZiyW9Yrqqrb9mgS7M5_84Ucallback=initMap">
-    </script>
-
-</body>
-
-</html> -->
-
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <meta name="viewport" content="width=device-width,initial-scale=1.0, user-scalable=no" />
 <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.8.0/p5.js"></script>
@@ -70,23 +8,6 @@
 
 <head>
     <title>Kettik</title>
-    <!-- <div class="navbar-container">
-
-        <div class="navbar" id="navbar">
-
-            <button class="hamburger" id="hamburger">
-                <i class="fa fa-bars"></i>
-            </button>
-
-            <ul class="nav-ul" id="nav-ul">
-                <li> <a href="homepage.html">Home</a></li>
-                <li><a href="#biography-section"> About </a></li>
-                <li><a href="search.html"> Search </a></li>
-            </ul>
-
-        </div>
-    </div> -->
-
     <style>
         #mymap {
             height: 100%;
@@ -191,4 +112,4 @@
         type="text/javascript"></script>
 </body>
 
-</html>
+</html> -->

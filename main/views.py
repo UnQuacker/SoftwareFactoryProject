@@ -1,11 +1,18 @@
+import random
 import traceback
 
+import django_filters
+from django.forms import CheckboxSelectMultiple
 from django.shortcuts import render
-from django.http import Http404, HttpResponseRedirect
+from django.http import Http404, HttpResponseRedirect, JsonResponse
 import pyrebase
+from django.views.decorators.csrf import csrf_exempt
+from rest_framework.parsers import JSONParser
+
 from .models import Place
-from .serializers import PlaceSerializer
+from .serializers import PlaceSerializer # PropertyFilter
 from rest_framework.generics import ListAPIView
+from rest_framework import filters
 
 
 firebaseConfig = {
@@ -90,5 +97,40 @@ def postsignUp(request):
 
 
 class PlaceListAPIView(ListAPIView):
-    queryset = Place.objects.all()
+
+    filter_backends = (filters.SearchFilter,)
+    search_fields = ['tags__name', ]
     serializer_class = PlaceSerializer
+    model = Place
+    queryset = Place.objects.all()
+
+    # queryset = Place.objects.all()
+    # serializer_class = PlaceSerializer
+    # filter_backends = [filters.SearchFilter]
+    # search_fields = ['tags']
+
+
+@csrf_exempt
+def random_place(request):
+    if request.method == 'GET':
+        articles = list(Place.objects.all())
+        random_article = random.choice(articles)
+        serializer = PlaceSerializer(random_article)
+        return JsonResponse(serializer.data, safe=False)
+    elif request.method == 'POST':
+        data = JSONParser().parse(request)
+        serializer = PlaceSerializer(data=data)
+        if serializer.is_valid():
+            serializer.save()
+            return JsonResponse(serializer.data, status=201, safe=False)
+        return JsonResponse(serializer.errors, status=400)
+
+
+def place(request):
+    articles = list(Place.objects.all())
+    random_article = random.choice(articles)
+    print("Place Name:", random_article.name)
+    print("Place Image:", random_article.place_image)
+    print("Place URL", random_article.place_url)
+    return render(request, 'main/rand.html', {'place': random_article})
+

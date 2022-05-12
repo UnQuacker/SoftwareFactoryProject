@@ -1,0 +1,45 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="shortcut icon" href="{%  static 'main/images/x.jpg' %}" class="favicon">
+    <link href="https://fonts.googleapis.com/css?family=Orbitron:400,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+        integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+        type="text/css">
+    <link rel="stylesheet" href="{% static 'main/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'main/css/randcss.css' %}">
+    <title>Dev project</title>
+</head>
+
+<body>
+    <!-- <div class="content">
+        <div class="nav">
+            <div class="nav-logo">Kettik</div>
+            <input type="checkbox" id="nav-toggle">
+            <label for="nav-toggle" class="navbar burger-menu">
+                <i class="fas fa-bars"></i>
+            </label>
+            <li class="nav-hide nav-home"><a href="index.html">Home</a></li>
+            <li class="nav-hide nav-about"><a href="#">About</a></li>
+            <li class="nav-hide nav-contact"><a href="Categories.html">Categories</a></li>
+            <li class="nav-hide nav-s-up"><a href="register.html">Sign-Up<i class="fas fa-user-plus"></i></a></li>
+            <li class="nav-hide nav-s-in"><a href="login.html">Login<i class="fas fa-user"></i></a></li>
+            </ul>
+        </div>
+    </div> -->
+
+
+    <br>
+    <a class="button" href="{% url 'main:place' %}"><i class="" aria-hidden="true"></i> Redoo </a>
+    <br><br>
+    <p>{{ place.name }}</p>
+    <a href="{{ place.place_url }}">Link to a place</a>
+    {% for tag in place.tags.all %}
+        <p>{{ tag }}</p>
+    {%endfor%}
+    <img src="http://127.0.0.1:8000/media/{{ place.place_image }}" alt="">
+</body>
+</html>

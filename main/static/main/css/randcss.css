@@ -1,0 +1,28 @@
+html {
+    position: relative;
+    min-height: 100%;
+  }
+  body {
+    margin-bottom: 120px;
+  }
+  .footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    min-height: 60px;
+    display: flex;
+    flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: #bebebe;
+  }
+  
+  a {
+      color: #bebebe;
+  }
+  
+  p {
+      text-align: center;
+      margin-bottom: 0;
+  }
+  
